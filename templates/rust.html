@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload | Diabetic Retinopathy Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Hind', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #81d4fa, #4fc3f7, #29b6f6, #039be5);
+      background-size: 300% 300%;
+      animation: gradientMove 15s ease infinite;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      color: #01579b;
+      flex-shrink: 0;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .upload-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      width: 90%;
+      max-width: 420px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .upload-container h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #0277bd;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+    }
+
+    img#output-image {
+      max-width: 100%;
+      max-height: 250px;
+      height: auto;
+      border-radius: 12px;
+      margin: 1.2rem 0;
+      display: none;
+      border: 2px dashed #81d4fa;
+      object-fit: contain;
+      background: #f8fdff;
+    }
+
+    button {
+      background-color: #0288d1;
+      color: white;
+      border: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background-color: #039be5;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(3, 155, 229, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #01579b;
+      background-color: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      font-weight: 500;
+      flex-shrink: 0;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .upload-container {
+        width: 95%;
+        padding: 1.5rem;
+      }
+      header h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>Eye Diabetic Retinopathy Detection</h2>
+    <p><b>Please Upload a Clear Fundus Eye Image</b></p>
+  </header>
+
+  <div class="upload-container">
+    <form method="post" enctype="multipart/form-data">
+      <h3>Select Retinal Image:</h3>
+      <input type="file" name="file" accept="image/*" onchange="preview_image(event)" required />
+      <img id="output-image" alt="Image Preview" />
+      <button type="submit">Predict Retinopathy</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 — Diabetic Retinopathy Detection Using Deep Learning
+  </footer>
+
+  <script>
+    function preview_image(event) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const output = document.getElementById('output-image');
+        output.src = reader.result;
+        output.style.display = 'block';
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+
+</body>
+</html>

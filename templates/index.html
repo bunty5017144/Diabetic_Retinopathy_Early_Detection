@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetic Retinopathy Detection | Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Hind', sans-serif;
+      background: linear-gradient(135deg, #b3e5fc, #81d4fa, #4fc3f7, #29b6f6);
+      background-size: 300% 300%;
+      animation: gradientBG 12s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 2rem;
+      color: #01579b;
+      text-align: center;
+      font-size: 1.8rem;
+      font-family: 'Pacifico', cursive;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      color: white;
+    }
+
+    .banner h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner h4 {
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #01579b;
+      margin: 3rem 0 1.5rem;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0 2rem 4rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: scale(1.02);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+    }
+
+    .service-content h4 {
+      font-size: 1.5rem;
+      color: #0277bd;
+      margin-bottom: 1rem;
+    }
+
+    .service-content p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .service-content a {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background-color: #0288d1;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-content a:hover {
+      background-color: #039be5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #01579b;
+      font-size: 0.95rem;
+      backdrop-filter: blur(10px);
+    }
+
+    @media (min-width: 768px) {
+      .service-card {
+        flex-direction: row;
+      }
+
+      .service-card img {
+        width: 50%;
+      }
+
+      .service-content {
+        width: 50%;
+        padding: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .services {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    Diabetic Retinopathy Detection System
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="banner">
+    <h3>Diabetic Retinopathy Detection Using Deep Learning</h3>
+    <h4><strong>Upload High-Quality Fundus Eye Images</strong></h4>
+  </section>
+
+  <!-- Services Section -->
+  <section>
+    <h3 class="section-title">Our Services</h3>
+    <div class="services">
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/pr1.jpg') }}" alt="Fundus Eye Image">
+        <div class="service-content">
+          <h4>Retinal Image Analysis</h4>
+          <p>Upload a clear fundus photograph of your eye. Our AI model will analyze it for signs of diabetic retinopathy using advanced deep learning.</p>
+          <a href="{{ url_for('disease_prediction') }}">Upload Eye Image</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 — Diabetic Retinopathy Detection Using Deep Learning
+  </footer>
+
+</body>
+</html>
